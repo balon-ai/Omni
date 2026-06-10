@@ -169,3 +169,11 @@ If `TOGETHER_API_KEY` is not set, STT falls back to `NullSTTProvider` (no transc
 - Anime.js — UI animations
 - Web Audio API — mic VAD, TTS analysis, HUD sounds
 - TanStack Router — client-side routing
+
+---
+
+## Contributing
+
+Interested in contributing or becoming a maintainer?
+
+**[Apply here](https://forms.clickup.com/9011346533/f/8chwf35-1591/6XNT69FA23PQUXR4XC)**
