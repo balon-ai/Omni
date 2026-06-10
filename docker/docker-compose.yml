@@ -1,0 +1,23 @@
+services:
+
+  omni-backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: omni-backend
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    volumes:
+      # Config and persona are mounted read-only — never baked into the image
+      - ../omni.config.json:/app/omni.config.json:ro
+      - ../omni.persona.json:/app/omni.persona.json:ro
+      # Persistent DB and sandbox scratch space
+      - omni_db:/app/omni.db
+      - omni_sandbox:/sandbox
+    ports:
+      - "18789:18789"
+
+volumes:
+  omni_db:
+  omni_sandbox:

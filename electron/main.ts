@@ -283,6 +283,23 @@ ipcMain.handle('gateway:status', () => ({
   connected: chatBackend.isConnected(),
 }))
 
+// ── Shell sandbox IPC ─────────────────────────────────────────────────────────
+// Runs a command inside the bubblewrap sandbox.
+// bwrap-exec.sh must be on PATH or at BWRAP_EXEC env var.
+ipcMain.handle('shell:exec', async (_e, { cmd, args = [], timeoutMs = 10000 }: {
+  cmd: string; args?: string[]; timeoutMs?: number
+}) => {
+  const bwrapExec = process.env['BWRAP_EXEC']
+    ?? path.join(__dirname, '..', 'docker', 'bwrap-exec.sh')
+
+  return new Promise((resolve) => {
+    const child = execFile(bwrapExec, [cmd, ...args], { timeout: timeoutMs }, (err, stdout, stderr) => {
+      resolve({ ok: !err, stdout, stderr, code: err?.code ?? 0 })
+    })
+    child.on('error', (e) => resolve({ ok: false, stdout: '', stderr: String(e), code: -1 }))
+  })
+})
+
 // ── STT IPC ───────────────────────────────────────────────────────────────────
 ipcMain.handle('transcribe', async (_e, { buffer, mimeType }: { buffer: ArrayBuffer; mimeType: string }) => {
   return await sttProvider.transcribe(buffer, mimeType)
