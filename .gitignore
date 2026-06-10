@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-electron/
+*.db
+.env
+.env.*
+
+# User config — contains personal names, IPs, node locations.
+# Copy omni.config.example.json → omni.config.json and fill in your values.
+omni.config.json
+
+# Persona config — contains user/assistant names and tone preferences.
+# Copy omni.persona.example.json → omni.persona.json and fill in your values.
+omni.persona.json

@@ -1,0 +1,77 @@
+{
+  "user": {
+    "name": "User",
+    "fullName": "Your Name"
+  },
+  "eos": {
+    "host": "YOUR_EOS_HOST",
+    "services": {
+      "chatterbox":   7852,
+      "xtts":         7853,
+      "whisper":      7854,
+      "browserAgent": 7855,
+      "kokoro":       7851,
+      "comfyui":      8188,
+      "ollama":       11434
+    }
+  },
+  "local": {
+    "browserAgent": {
+      "http": "http://localhost:7855",
+      "ws":   "ws://localhost:7855/stream"
+    },
+    "mcpServer": 7856
+  },
+  "tts": {
+    "exaggeration":      0.4,
+    "cfgWeight":         0.6,
+    "temperature":       0.7,
+    "repetitionPenalty": 1.2,
+    "topP":              0.95,
+    "minP":              0.05
+  },
+  "together": {
+    "whisperModel": "your-stt-model-id"
+  },
+  "network": {
+    "ping": {
+      "gateway": "192.168.1.1",
+      "vpn":     "10.8.0.1"
+    }
+  },
+  "nodes": [
+    {
+      "id":      "local",
+      "label":   "THIS NODE",
+      "lat":     0.0,
+      "lon":     0.0,
+      "location":"Your City",
+      "color":   "#00e5ff",
+      "r":       0.030
+    },
+    {
+      "id":      "remote",
+      "label":   "REMOTE",
+      "lat":     0.0,
+      "lon":     0.0,
+      "location":"Remote Location",
+      "color":   "#00e5ff",
+      "r":       0.022
+    },
+    {
+      "id":      "vpn",
+      "label":   "VPN",
+      "lat":     0.0,
+      "lon":     0.0,
+      "location":"VPN Location",
+      "color":   "#80f0ff",
+      "r":       0.022,
+      "vpn":     true
+    }
+  ],
+  "hud": {
+    "subtitle":   "OMNI · NEURAL INTERFACE · v0.1",
+    "modelLabel": "YOUR MODEL",
+    "modelNote":  ""
+  }
+}
